@@ -45,7 +45,35 @@ func main() {
 		StartTimeInSeconds: 2323232,
 		Manual:             false,
 	}
-	message := Message{[]FitFile{file}}
+
+	file2 := FitFile{
+		UserId:             "adf_xdsd",
+		UserAccessToken:    "dfdzf",
+		FileType:           "FIT",
+		CallBackUrl:        "http://localhost:8080/fit2/",
+		StartTimeInSeconds: 2323292,
+		Manual:             false,
+	}
+
+	file3 := FitFile{
+		UserId:             "adf_xdsd",
+		UserAccessToken:    "dfdzf",
+		FileType:           "FIT",
+		CallBackUrl:        "http://localhost:8080/fit3/",
+		StartTimeInSeconds: 2323292,
+		Manual:             false,
+	}
+
+	file4 := FitFile{
+		UserId:             "adf_xdsd",
+		UserAccessToken:    "dfdzf",
+		FileType:           "FIT",
+		CallBackUrl:        "http://localhost:8080/fit4/",
+		StartTimeInSeconds: 2323292,
+		Manual:             false,
+	}
+
+	message := Message{[]FitFile{file, file2, file3, file4}}
 
 	requestBody, err := json.Marshal(message)
 	fmt.Printf("%s\n", requestBody)
@@ -78,10 +106,25 @@ func main() {
 	fmt.Println("Ping OK")
 
 	http.HandleFunc("/fit/", serveFit)
+	http.HandleFunc("/fit2/", serveFit2)
+	http.HandleFunc("/fit3/", serveFit3)
+	http.HandleFunc("/fit4/", serveFit4)
 
 	http.ListenAndServe(":8080", nil)
 }
 
 func serveFit(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "5206944119.fit")
+}
+
+func serveFit2(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "3x250m.fit")
+}
+
+func serveFit3(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "davidfit.fit")
+}
+
+func serveFit4(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "FR-GAR-2020-07-11.fit")
 }
