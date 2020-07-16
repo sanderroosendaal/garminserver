@@ -68,7 +68,7 @@ func main() {
 		UserId:             "adf_xdsd",
 		UserAccessToken:    "dfdzf",
 		FileType:           "FIT",
-		CallBackUrl:        "http://localhost:8080/fit4/",
+		CallBackUrl:        "http://localhost:8080/fit4/?id=12",
 		StartTimeInSeconds: 2323292,
 		Manual:             false,
 	}
